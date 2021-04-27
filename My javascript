@@ -1,0 +1,48 @@
+
+1 | Create a JavaScript file
+In your project, in the same folder as your index.html page, create a new file called my-project.js. All of your project’s JavaScript code should be written in .js files.
+2 | Add some test code to the file
+In your new file my-project.js, add the code below:
+console.log('It works!');
+This code will show the message “It works!” in your browser’s developer output window, which we will look at soon.
+3 | Add the file to your web page
+In your index.html file, add a script tag to load your new JavaScript. The script tag should be the last line of code before your closing body tag.
+This is the line you need to add:
+<script src="my-project.js"></script>
+And this is an example HTML file including the new line:
+<!doctype html>
+<html>
+    <head>
+        <title>Example Page</title>
+    </head>
+    <body>
+        <h1>Welcome to my Example Page</h1>
+        <p>This is some page content.</p>
+        <script src="my-project.js"></script>
+    </body>
+</html>
+4 | Save your files
+Make sure you have saved all your files, especially your new my-project.js and your changes to index.html.
+5 | Open the web page in Google Chrome
+In your normal operating system’s folder browser, find your index.html file. Right click the file and choose “Open with Google Chrome”.
+6 | Open the Developer Console
+In Chrome, click on the options menu at the top right, which looks like three little dots. Go to More Tools then click Developer Tools.
+In the developer tools, click on the tab called Console and you should see your message “It works!”
+If you do not see the message, you will need to double-check that you have followed the steps correctly.
+Quick Recap
+Here’s all the steps in a simplified form:
+Create a new JavaScript file with some console.log() test code.
+Load the JavaScript file using a script tag in your HTML.
+Use the Developer Tools to check that the message shows up.
+Once the test message is showing up successfully, you can add any other JavaScript code you want to the file.
+Common problems
+If your message is not showing up, check the following:
+There are no mistakes in your JavaScript code.
+There are no mistakes in your HTML code.
+You have both an opening <script> and a closing </script> tag.
+Script tags have been added to every HTML page where you want the JavaScript to be included (we only added it to index.html).
+The file name my-project.js is spelled exactly the same in both the HTML and the actual file name. Capital letters matter!
+You have definitely saved all your files.
+19
+
+
