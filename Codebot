@@ -1,0 +1,114 @@
+Code generation is pretty simple and you are likely already doing it. The easiest case to show is how most people generate HTML for websites. In almost all modern web application frameworks (Rails, CakePHP, Grails, and sooo many more) there is some sort of template mechanism.
+
+One of my more recent favourite HTML site generation tools is Jekyll. It is super simple and powerful to use. If you are not familiar with code generation then have a look at the Jeykll step-by-step guide. But in summary, the following code block is a hello world HTML page. Nothing special here.
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Home</title>
+  </head>
+  <body>
+    <h1>Hello World!</h1>
+  </body>
+</html>
+Using an object, the page title can be passed to the template to generate a dynamic title as seen in the next code snippet. See the title Home has been replaced.
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>What is a code generator?</title>
+  </head>
+  <body>
+    <h1>Hello World!</h1>
+  </body>
+</html>
+From this simple concept, we can generate lots of HTML pages with different titles by passing in different values.
+
+It is also possible to use standard selection and repetition statement like an if statement or a for loop. This allows developers to embed logic into a page. Jekyll uses Liquid for this purpose as seen in the following code block using tags. This for loop sets up the links in the navigation menu.
+
+<nav>
+  {% for item in site.data.navigation %}
+    <a href="{{ item.link }}" {% if page.url == item.link %}style="color: red;"{% endif %}>
+      {{ item.name }}
+    </a>
+  {% endfor %}
+</nav>
+From a board perspective, this is pretty much how code generation works. A template is invoked to generate some code with some data being passed to the template for use. The template will have some sort of way to process the data and usually provide a way to do standard programming things like loops and selections.
+
+Simple, powerful, and inviting …
+
+So, instead of taking a week to hand code 99 HTML files that are all very similar but different. I can use a code generator and save myself lots of time! This leads to the pro’s of code generation.
+
+The pro’s of code generation
+To get a feeling for the pro’s of code generation, here is a quote from a professional software engineer.
+
+“I like that it takes care of the mundane and boilerplate code that every application needs allowing me to get into the interesting code straight away.” Kieran Lockyer, Software Engineer
+
+Some of the benefits that come with code generation include:
+
+Pro	Comment	Accelerate
+Time saving and faster turnaround to release.	Computers are automating machines.	Use code to write code and save time.
+Less hand coding so less human errors.	Software is built using patterns.	Use patterns and understand typical tasks to remove manual steps.
+Reuse across multiple applications.	Avoid reinventing the wheel on existing and new projects.	Reuse solutions to gain overall organisational momentum.
+Better coverage for testing and quality.	Model-based testing can help with quality.	Use tests to ensure generated code continues to work and add tests for customisations.
+Consistent architecture ready for extending.	Large systems can have consistent implementations reducing technical debt.	Varied skilled developers can be productive quicker after structured training.
+Better documentation.	Documentation usually lags behind development.	Write documentation using code generators to ensure consistency.
+This is a pretty powerful list of pro’s. So, what is the catch? What can go wrong?
+
+The con’s of code generation
+Again, to get a feeling lets start with a quote from a different professional software engineers.
+
+“When code becomes a black-box that I cannot understand, I lose time and everything takes longer and costs more.” Blake Lockett, Software Engineer
+
+Some of the cons of code generation include:
+
+Con	Comment	Mitigation
+Black-box of machine mess.	Code that cannot be understood by a developer.	The code must be develop friendly to allow customisations.
+Complex models.	Models can become increasingly complex.	Do not expect 100% app generation.
+Code bloat.	Excessive amounts of code due to generation.	Code must pass code reviews the same as a develop.
+Tooling.	A lot of tools are hard to use with wasted time and frustration.	The tools must use familiar concepts and provide learning pathways.
+Rigid structure.	Some architectures and hard to extend for new requirements.	The ability to evolve the tooling to support new requirements.
+Mental fatigue.	Writing code generators is a difficult task due to complexity leading to developer burnout.	Acknowledge the problem and bring emotional intelligence to manage fatigue.
+Impassioned developers.	Some bad experiences have made developers anti code generation.	Accept their point of view and offer scientific data and education to influence.
+The list here represents what we have learnt as an industry about the dark side of code generators, which is a good thing. Now we can learn from this and move forward with better solutions.
+
+Some of the solutions are technical. For example, let’s use code generators that provide better ways to seperate our concerns, like using functions. Some other solutions are more philosophical. For example, by not expecting 100% of the target application generated, we can shift the problem and ensure code quality with humans and bots working together.
+
+How do you use code generators correctly?
+Using just a code generator is like driving a Ferrari around in 1st gear. There is so much more available under the hood that is just waiting for you to discover.
+
+In the above simple example using Jekyll, it was shown that we could generate a HTML page with the title dynamically generated. But it is possible to pass far more sophisticated input to the template. For example, convention over configuration frameworks like Rails use the active record pattern to generate full stack software application based off the database schema. This is a definite step in the right direction.
+
+Other more modern frameworks are using other input like OpenAPI definitions. For example, Swagger Codegen generates stubs in lots of different programming languages from the OpenAPI definition. Other frameworks take it further (like StackGen) that do full stack applications from the OpenAPI definition. Again, another definite step in the right direction and shifting our metaphorical car into 2nd gear.
+
+But to go into even higher gears we need more sophisticated control of the input to the code generator and this brings us into the realms of models. A database schema is a model. An OpenAPI definition is a model. Actually for modelling purists, everything is a model but that does not help our discussion here. What you need to imagine is that the input going into a code generator is a model. With this mental leap you have now shifted up into 3rd gear but there is a next important step for 4th gear. And this is one that some people never make …
+
+If your input to your code generator is controlled by a database schema, or an OpenAPI definition, or the like, then you are limiting yourself to that input model. To shift to the next gear, you must be able to control the meta-model. So, what is the meta-model you ask? The meta-model specifies what can be found in the model. It is sort of like how an XSD describes what can be found in a compliant XML.
+
+The meta-model is the key. I cannot emphasise this point enough.
+
+Once you have control of the meta-model you can enrich the input into the code generator beyond just a database schema or OpenAPI definition. It removes a huge limitation and subsequently shifts control back to the developer. This is the position that you want to get yourself into.
+
+If this intrigues you, have a look at the Epsilon tools or do a search for model-driven engineering tools. Be warned though, this is pretty cool and powerful stuff.
+
+How is Codebots different to a code generator?
+For a long time I banned the use of the ‘g’ word in our company. If anyone said generate (or the like) they would have to put $1 into the swear jar. The reason was that so many people have preconceptions of what code generators are and more than likely have been burned by one in the past. As a developer, I too have used code generators that left me jaded. When you are trying to solve a problem that is hidden inside a machine generated mess of code, it is easy to understand why some people have an aversion to code generators. There is almost some type of PTSD that people suffer from.
+
+This was one of the reasons I thought it would be easier just to avoid the problem by saying we don’t use code generators.
+
+The reality is that at some point we need a codebot to write some code. In the model-driven engineering world we call this a model-to-text (M2T) transformation. Or in the history of our industry we have called this a code generator. Or if you like, a templating mechanism. So, on this level I concede. We use a code generator in the final step for a codebot writing code. Like Wild E. Coyote, if you can’t beat em, join em.
+
+The swear jar has been removed.
+
+But most importantly Codebots use and allow our customers control over the meta-model. This is a significant step and we are driving our Ferrari in a high gear. So high actually, that we have included AI at various points in our stack. So, Codebots is so much more than just another code generator.
+
+Summary
+Code generators are just one arrow in the quiver of modern software developers. In this article, we have looked at a simple example using Jekyll and how template based code generation works. We have also looked at the pro’s and con’s of using code generators. Very few other technologies have a pro’s list with so much potential.
+
+But given the history of code generators in our industry, I understand the scepticism that surrounds their use. Not only has a bad reputation been obtained from code generators, the rise of UML as a standard modelling language has made new students of software cry and managers recall the bad old days of wasted time on models, that simply turned into a maintenance burden and overhead.
+
+All that said, if you had the opportunity to drive a Ferrari, would you say no because of the historical number of car crashes? I would say that you would be willing to have a drive. And then once you are in the car, would you just stick to 1st gear? I know what I would be doing.
+
+Welcome to the era of the codebot. Let’s shift up some more metaphorical gears. Model-driven engineering with artificial intelligence … now we’re talking.
